@@ -8,7 +8,21 @@ static char *escape(char *str) {
   char *q = buf;
 
   for (char *p = str; *p != '\0'; p++) {
-    *q++ = *p;
+    if (*p != '\\') {
+      *q++ = *p;
+      continue;
+    }
+    p++;
+    if (*p == '\0') {
+      *q++ = '\\';
+      break;
+    } else if (*p == 't') {
+      *q++ = '\t';
+    } else if (*p == 'n') {
+      *q++ = '\n';
+    } else if (*p == '\\') {
+      *q++ = '\\';
+    }
   }
   *q = '\0';
 
