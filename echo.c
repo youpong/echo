@@ -1,10 +1,27 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+static char *escape(char *str) { return str; }
 
 int main(int argc, char **argv) {
+  bool escape_flg = false;
+
+  if (argc == 1) {
+    printf("\n");
+    return 0;
+  }
+
+  if (strcmp(*(argv + 1), "-e") == 0) {
+    escape_flg = true;
+    argv++;
+  }
+
   char *fmt = "%s";
   for (argv++; *argv != NULL; argv++) {
-    printf(fmt, *argv);
+
+    printf(fmt, escape_flg ? escape(*argv) : *argv);
     fmt = " %s";
   }
   printf("\n");
