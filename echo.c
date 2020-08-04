@@ -3,7 +3,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-static char *escape(char *str) { return str; }
+static char *escape(char *str) {
+  char *buf = malloc(strlen(str) + 1);
+  char *q = buf;
+
+  for (char *p = str; *p != '\0'; p++) {
+    *q++ = *p;
+  }
+  *q = '\0';
+
+  return buf;
+}
 
 int main(int argc, char **argv) {
   bool escape_flg = false;
