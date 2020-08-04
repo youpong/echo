@@ -20,8 +20,8 @@ static char *escape(char *str) {
       *q++ = '\t';
     } else if (*p == 'n') {
       *q++ = '\n';
-    } else if (*p == '\\') {
-      *q++ = '\\';
+    } else {
+      *q++ = *p;
     }
   }
   *q = '\0';
