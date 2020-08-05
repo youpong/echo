@@ -1,16 +1,18 @@
 CC = gcc
 CFLAGS = -g -Wall
 
-.PHONY: all clean format test
+TARGET = echo
 
-all: echo
+.PHONY: all clean format check
+
+all: $(TARGET)
 
 clean:
-	- rm -f *.o echo
+	- rm -f *.o $(TARGET)
 format:
 	clang-format -i *.c
 
-test: all
+check: all
 	./test.sh
 
 echo: echo.o
