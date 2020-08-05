@@ -30,23 +30,20 @@ static char *escape(char *str) {
 }
 
 int main(int argc, char **argv) {
+  char **args = argv + 1; 
   bool escape_flg = false;
 
-  if (argc == 1) {
-    printf("\n");
-    return 0;
-  }
-
-  if (strcmp(*(argv + 1), "-e") == 0) {
+  // read option
+  if (*args != NULL && strcmp(*args, "-e") == 0) {
     escape_flg = true;
-    argv++;
+    args++;
   }
 
-  char *fmt = "%s";
-  for (argv++; *argv != NULL; argv++) {
-
-    printf(fmt, escape_flg ? escape(*argv) : *argv);
-    fmt = " %s";
+  // echo args
+  char *delim = "";
+  for (char **p = args; *p != NULL; p++) {
+    printf("%s%s", delim, escape_flg ? escape(*p) : *p);
+    delim = " ";
   }
   printf("\n");
 
