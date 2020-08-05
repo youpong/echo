@@ -1,3 +1,4 @@
+CC = gcc
 CFLAGS = -g -Wall
 
 .PHONY: all clean format test

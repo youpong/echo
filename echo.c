@@ -30,7 +30,7 @@ static char *escape(char *str) {
 }
 
 int main(int argc, char **argv) {
-  char **args = argv + 1; 
+  char **args = argv + 1;
   bool escape_flg = false;
 
   // read option
