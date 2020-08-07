@@ -8,11 +8,11 @@ TARGET = echo
 all: $(TARGET)
 
 clean:
-	- rm -f *.o $(TARGET)
+	- rm -f *.o $(TARGET) test
 format:
 	clang-format -i *.c
 
-check: all
-	./test.sh
+check: all test
+	./test
 
 echo: echo.o
